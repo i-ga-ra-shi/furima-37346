@@ -4,42 +4,49 @@
 
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
-| name               | string | null: false |
+| nickname           | string | null: false |
 | email              | string | null: false |
 | encrypted_password | string | null: false |
-| kanzi-name         | string | null: false |
-| katakana-name      | string | null: false |
-| date-of-birth      | date   | null: false |
+| last_name(kanzi)   | string | null: false |
+| first_name(kanzi)  | string | null: false |
+| last_name(kana)    | string | null: false |
+| family_name(kana)  | string | null: false |
+| date_of_birth      | date   | null: false |
 
 
 ### Association
 
 - has_many :items
 - has_many :comments
+- has_one :purchase
 
 
 ## items テーブル
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| image        | text       | null: false                    |
-| name         | string     | null: false                    |
-| explanation  | text       | null: false                    |
-| price        | integer    | null: false                    |
-| user         | references | null: false, foreign_key: true |
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| name               | string     | null: false                    |
+| explanation        | string     | null: false                    |
+| category           | string     | null: false                    |
+| condition          | string     | null: false                    |
+| delively_charge    | string     | null: false                    |
+| sender_prefectures | string     | null: false                    |
+| days_for_send      | string     | null: false                    |
+| price              | integer    | null: false                    |
+| user               | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - has_many :comments
-- has_one :buyer
+- has_one :purchase
 
 
 ## comments テーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
-| content | text       | null: false                    |
+| content | string     | null: false                    |
 | user    | references | null: false, foreign_key: true |
 | item    | references | null: false, foreign_key: true |
 
@@ -49,7 +56,7 @@
 - belongs_to :item
 
 
-## buyer テーブル
+## purchases テーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
@@ -60,15 +67,21 @@
 
 - belongs_to :user
 - belongs_to :item
+- has_one :address
 
 
-## address テーブル
+## addresses テーブル
 
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| address | text       | null: false                    |
-| buyer   | references | null: false, foreign_key: true |
+| Column       | Type       | Options                        |
+| ------------ | ---------- | ------------------------------ |
+| post_code    | string     | null: false                    |
+| prefectures  | string     | null: false                    |
+| cities       | string     | null: false                    |
+| address      | string     | null: false                    |
+| building     | string     | null: false                    |
+| phone_number | integer    | null: false                    |
+| purchase     | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :buyer
+- belongs_to :purchase
