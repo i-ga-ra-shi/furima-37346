@@ -2,38 +2,38 @@
 
 ## users テーブル
 
-| Column             | Type   | Options     |
-| ------------------ | ------ | ----------- |
-| nickname           | string | null: false |
-| email              | string | null: false |
-| encrypted_password | string | null: false |
-| last_name(kanzi)   | string | null: false |
-| first_name(kanzi)  | string | null: false |
-| last_name(kana)    | string | null: false |
-| family_name(kana)  | string | null: false |
-| date_of_birth      | date   | null: false |
+| Column             | Type   | Options                       |
+| ------------------ | ------ | ----------------------------- |
+| nickname           | string | null: false                   |
+| email              | string | null: false, uniqueness: true |
+| encrypted_password | string | null: false                   |
+| kanzi_last_name    | string | null: false                   |
+| kanzi_first_name   | string | null: false                   |
+| kana_last_name     | string | null: false                   |
+| kana_family_name   | string | null: false                   |
+| date_of_birth      | date   | null: false                   |
 
 
 ### Association
 
 - has_many :items
 - has_many :comments
-- has_one :purchase
+- has_many :purchases
 
 
 ## items テーブル
 
-| Column             | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| name               | string     | null: false                    |
-| explanation        | string     | null: false                    |
-| category           | string     | null: false                    |
-| condition          | string     | null: false                    |
-| delively_charge    | string     | null: false                    |
-| sender_prefectures | string     | null: false                    |
-| days_for_send      | string     | null: false                    |
-| price              | integer    | null: false                    |
-| user               | references | null: false, foreign_key: true |
+| Column                | Type       | Options                        |
+| --------------------- | ---------- | ------------------------------ |
+| name                  | string     | null: false                    |
+| explanation           | text       | null: false                    |
+| category_id           | string     | null: false                    |
+| condition_id          | string     | null: false                    |
+| delively_charge_id    | string     | null: false                    |
+| sender_prefectures_id | string     | null: false                    |
+| days_for_send_id      | string     | null: false                    |
+| price                 | integer    | null: false                    |
+| user                  | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -72,15 +72,15 @@
 
 ## addresses テーブル
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| post_code    | string     | null: false                    |
-| prefectures  | string     | null: false                    |
-| cities       | string     | null: false                    |
-| address      | string     | null: false                    |
-| building     | string     | null: false                    |
-| phone_number | integer    | null: false                    |
-| purchase     | references | null: false, foreign_key: true |
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| post_code      | string     | null: false                    |
+| prefectures_id | string     | null: false                    |
+| cities         | string     | null: false                    |
+| address        | string     | null: false                    |
+| building       | string     |                                |
+| phone_number   | string     | null: false                    |
+| purchase       | references | null: false, foreign_key: true |
 
 ### Association
 
