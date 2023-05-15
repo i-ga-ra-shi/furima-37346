@@ -2,16 +2,16 @@
 
 ## users テーブル
 
-| Column             | Type   | Options                       |
-| ------------------ | ------ | ----------------------------- |
-| nickname           | string | null: false                   |
-| email              | string | null: false, uniqueness: true |
-| encrypted_password | string | null: false                   |
-| kanzi_last_name    | string | null: false                   |
-| kanzi_first_name   | string | null: false                   |
-| kana_last_name     | string | null: false                   |
-| kana_family_name   | string | null: false                   |
-| date_of_birth      | date   | null: false                   |
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| nickname           | string | null: false               |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| kanzi_last_name    | string | null: false               |
+| kanzi_first_name   | string | null: false               |
+| kana_last_name     | string | null: false               |
+| kana_family_name   | string | null: false               |
+| date_of_birth      | date   | null: false               |
 
 
 ### Association
@@ -23,17 +23,17 @@
 
 ## items テーブル
 
-| Column                | Type       | Options                        |
-| --------------------- | ---------- | ------------------------------ |
-| name                  | string     | null: false                    |
-| explanation           | text       | null: false                    |
-| category_id           | string     | null: false                    |
-| condition_id          | string     | null: false                    |
-| delively_charge_id    | string     | null: false                    |
-| sender_prefectures_id | string     | null: false                    |
-| days_for_send_id      | string     | null: false                    |
-| price                 | integer    | null: false                    |
-| user                  | references | null: false, foreign_key: true |
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| name               | string     | null: false                    |
+| explanation        | text       | null: false                    |
+| category_id        | integer    | null: false                    |
+| condition_id       | integer    | null: false                    |
+| delivery_charge_id | integer    | null: false                    |
+| prefecture_id      | integer    | null: false                    |
+| day_for_send_id    | integer    | null: false                    |
+| price              | integer    | null: false                    |
+| user               | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -72,15 +72,15 @@
 
 ## addresses テーブル
 
-| Column         | Type       | Options                        |
-| -------------- | ---------- | ------------------------------ |
-| post_code      | string     | null: false                    |
-| prefectures_id | string     | null: false                    |
-| cities         | string     | null: false                    |
-| address        | string     | null: false                    |
-| building       | string     |                                |
-| phone_number   | string     | null: false                    |
-| purchase       | references | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| post_code     | string     | null: false                    |
+| prefecture_id | integer    | null: false                    |
+| city          | string     | null: false                    |
+| address       | string     | null: false                    |
+| building      | string     |                                |
+| phone_number  | string     | null: false                    |
+| purchase      | references | null: false, foreign_key: true |
 
 ### Association
 
