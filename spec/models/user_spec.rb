@@ -87,7 +87,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Kanzi last name can't be blank")
       end
 
-      it 'kanzi_last_nameが半角英数字を含むと登録できない' do
+      it 'kanzi_last_nameが半角文字を含むと登録できない' do
         @user.kanzi_last_name = '田中123号'
         @user.valid?
         expect(@user.errors.full_messages).to include('Kanzi last name is invalid. Input full-width characters')
@@ -99,7 +99,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Kanzi first name can't be blank")
       end
 
-      it 'kanzi_first_nameが半角英数字を含むと登録できない' do
+      it 'kanzi_first_nameが半角文字を含むと登録できない' do
         @user.kanzi_first_name = '太郎123号'
         @user.valid?
         expect(@user.errors.full_messages).to include('Kanzi first name is invalid. Input full-width characters')
