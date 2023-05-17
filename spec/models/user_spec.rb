@@ -7,7 +7,7 @@ RSpec.describe User, type: :model do
 
   describe 'ユーザー新規登録' do
     context 'ユーザー新規登録ができる場合' do
-      it 'nickname,email,password,password_confirmation,kanzi_last_name,kanzi_first_name,kana_last_name,kana_first_name,date_of_birthが存在すれば登録できる' do
+      it 'nickname,email,password,password_confirmation,kanji_last_name,kanji_first_name,kana_last_name,kana_first_name,date_of_birthが存在すれば登録できる' do
         expect(@user).to be_valid
       end
     end
@@ -81,28 +81,28 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
 
-      it 'kanzi_last_nameが空だと登録できない' do
-        @user.kanzi_last_name = ''
+      it 'kanji_last_nameが空だと登録できない' do
+        @user.kanji_last_name = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Kanzi last name can't be blank")
+        expect(@user.errors.full_messages).to include("Kanji last name can't be blank")
       end
 
-      it 'kanzi_last_nameが半角文字を含むと登録できない' do
-        @user.kanzi_last_name = '田中123号'
+      it 'kanji_last_nameが半角文字を含むと登録できない' do
+        @user.kanji_last_name = '田中123号'
         @user.valid?
-        expect(@user.errors.full_messages).to include('Kanzi last name is invalid. Input full-width characters')
+        expect(@user.errors.full_messages).to include('Kanji last name is invalid. Input full-width characters')
       end
 
-      it 'kanzi_first_nameが空だと登録できない' do
-        @user.kanzi_first_name = ''
+      it 'kanji_first_nameが空だと登録できない' do
+        @user.kanji_first_name = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Kanzi first name can't be blank")
+        expect(@user.errors.full_messages).to include("Kanji first name can't be blank")
       end
 
-      it 'kanzi_first_nameが半角文字を含むと登録できない' do
-        @user.kanzi_first_name = '太郎123号'
+      it 'kanji_first_nameが半角文字を含むと登録できない' do
+        @user.kanji_first_name = '太郎123号'
         @user.valid?
-        expect(@user.errors.full_messages).to include('Kanzi first name is invalid. Input full-width characters')
+        expect(@user.errors.full_messages).to include('Kanji first name is invalid. Input full-width characters')
       end
 
       it 'kana_last_nameが空だと登録できない' do

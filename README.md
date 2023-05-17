@@ -7,8 +7,8 @@
 | nickname           | string | null: false               |
 | email              | string | null: false, unique: true |
 | encrypted_password | string | null: false               |
-| kanzi_last_name    | string | null: false               |
-| kanzi_first_name   | string | null: false               |
+| kanji_last_name    | string | null: false               |
+| kanji_first_name   | string | null: false               |
 | kana_last_name     | string | null: false               |
 | kana_first_name    | string | null: false               |
 | date_of_birth      | date   | null: false               |
