@@ -7,13 +7,16 @@ function price() {
         const TaxNum = Math.floor(PriceNum * 0.1);
         const ProfitNum = PriceNum - TaxNum;
         
-        if (!/^[0-9]+$/.test(ItemPrice.value)) {
+        if (ItemPrice.value === "") {
             AddTaxPrice.innerHTML = "";
             Profit.innerHTML = "";
         }
-        if (!isNaN(ProfitNum) && !isNaN(TaxNum)) {
-            AddTaxPrice.innerHTML = `${TaxNum.toLocaleString(undefined, {useGrouping: true})}`;
-            Profit.innerHTML = `${ProfitNum.toLocaleString(undefined, {useGrouping: true})}`;
+        if (/^[0-9]+$/.test(ItemPrice.value)) {
+            AddTaxPrice.innerHTML = `${TaxNum.toLocaleString()}`;
+            Profit.innerHTML = `${ProfitNum.toLocaleString()}`;
+        } else {
+            AddTaxPrice.innerHTML = "";
+            Profit.innerHTML = "";            
         }
     })
 }
