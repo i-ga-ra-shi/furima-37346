@@ -23,6 +23,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    if Purchase.where(item_id: @item.id).exists?
+      redirect_to root_path
+    end
     move_to_index
   end
 
