@@ -23,9 +23,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if Purchase.where(item_id: @item.id).exists?
-      redirect_to root_path
-    end
+    redirect_to root_path if Purchase.where(item_id: @item.id).exists?
     move_to_index
   end
 
@@ -38,20 +36,16 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    if current_user.id == @item.user_id
-
-      @item.destroy
-    end
+    @item.destroy if current_user.id == @item.user_id
     redirect_to root_path
   end
 
   private
 
   def move_to_index
-    unless user_signed_in? && current_user.id == @item.user_id
+    return if user_signed_in? && current_user.id == @item.user_id
 
-      redirect_to root_path
-    end
+    redirect_to root_path
   end
 
   def set_item
