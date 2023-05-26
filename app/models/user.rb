@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :items
+  has_many :purchases
 
   validates :nickname, :kanji_last_name, :kanji_first_name, :kana_last_name, :kana_first_name, :date_of_birth, presence: true
   validates :password,
