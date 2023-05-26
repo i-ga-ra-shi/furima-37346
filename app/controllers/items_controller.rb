@@ -23,8 +23,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    redirect_to root_path if Purchase.where(item_id: @item.id).exists?
-    move_to_index
+    redirect_to root_path if Purchase.where(item_id: @item.id).exists? else move_to_index
   end
 
   def update
