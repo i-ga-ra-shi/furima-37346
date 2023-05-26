@@ -7,7 +7,7 @@ class PurchasesController < ApplicationController
     if Purchase.where(item_id: @item.id).exists?
       redirect_to root_path
     elsif current_user.id == @item.user_id
-      redirect_to root_path if 
+      redirect_to root_path
     else
       @purchase_address = PurchaseAddress.new
     end
