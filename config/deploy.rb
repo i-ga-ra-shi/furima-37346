@@ -2,7 +2,7 @@
 lock '3.17.3'
 
 # Capistranoのログの表示に利用する
-set :application, 'frima-37346'
+set :application, 'furima-37346'
 
 # mainブランチを参照（デフォルトはmaster)
 set :branch, "main"
